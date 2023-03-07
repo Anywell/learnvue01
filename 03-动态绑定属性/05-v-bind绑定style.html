@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+
+<div id="app">
+<!--    <h2 :style="{key(属性名), value(属性值)}">{{message}}</h2>-->
+
+  <!-- key 不需要加单引号，value不加单引号时，会当做变量名 -->
+    <h2 :style="{fontSize: '50px'}">{{message}}</h2>
+  <!-- value 不加单引号，会当做变量-->
+    <h2 :style="{fontSize: finalSize, color: finalColor}">{{message}}</h2>
+  <!--使用函数-->
+    <h2 :style="getStyle()">{{message}}</h2>
+</div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const msg = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        finalSize: '100px',
+        finalColor: 'red'
+      },
+      methods: {
+        getStyle: function(){
+          return {fontSize: this.finalSize, color: this.finalColor};
+        }
+      }
+    })
+
+  </script>
+
 </body>
 </html>

@@ -2,9 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
 </head>
 <body>
-$END$
+
+<div id="app">
+  <!-- 1.v-if,条件为true，执行，为false，不执行-->
+  <h2 v-if="isShow">{{message}}</h2>
+
+
+  <!-- 2. v-if-else -->
+  <h2 v-if="isShow">isShow =  {{isShow}}</h2>
+  <h2 v-else="isShow">isShow =  {{isShow}}</h2>
+
+  <!-- 3. v-else-if -->
+  <h2 v-if="score >= 90">优秀</h2>
+  <h2 v-else-if="score >= 80">良好</h2>
+  <h2 v-else-if="score >= 60">及格</h2>
+  <h2 v-else>不及格</h2>
+
+
+</div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const msg = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        isShow: true,
+        score: 98
+      }
+    })
+
+  </script>
 </body>
 </html>

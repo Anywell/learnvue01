@@ -5,6 +5,25 @@
     <title>Title</title>
 </head>
 <body>
+  <div id="app">
+      {{message}}
+      <h2>{{url}}</h2>
+      <h2 v-html="url"></h2>
+      <h2 v-text="message"></h2>
+    </div>
 
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const msg = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        url: '<a href="http://www.baidu.com">百度一下</a>'
+
+      }
+    })
+
+  </script>
 </body>
 </html>

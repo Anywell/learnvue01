@@ -2,9 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
 </head>
 <body>
-$END$
+
+<div id="app">
+  <h2>{{message}}</h2>
+  <!-- 事件调用的方法没有参数,可以省略函数后面的小括号 -->
+  <button @click="btn1Click()">按钮1</button>
+  <button @click="btn1Click">按钮1</button>
+
+  <!-- 在事件定义时，方法有参数，调用方法时省略了小括号没有传递参数，
+   此时vue会默认将浏览器产生的event对象作为参数传入到方法 -->
+  <button @click="btn2Click">按钮2</button>
+  <!-- 不传入参数，默认将浏览器产生的event对象传递给第一个参数 name -->
+  <button @click="btn3Click">按钮3</button>
+  <!-- 传入一个参数，默认将'hello'赋值给name,event值为undefined -->
+  <button @click="btn3Click('hello')">按钮3</button>
+
+  <!-- 要手动获取浏览器产生的event对象，需传入 $event，固定写法-->
+  <button @click="btn3Click('hello', $event)">按钮3</button>
+
+</div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const msg = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊'
+      },
+      methods: {
+          btn1Click(){
+              console.log('btnClick');
+          },
+          btn2Click(name){
+              console.log(name);
+          },
+          btn3Click(name, event){
+              console.log(name, event)
+          }
+      }
+    })
+
+    /* 函数定义了参数，调用时没有传入参数，参数默认为undefined*/
+    function abc(name){
+        console.log(name);
+    }
+
+    abc();
+
+  </script>
 </body>
 </html>
