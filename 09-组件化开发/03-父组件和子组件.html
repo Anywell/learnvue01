@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+  <cpn2></cpn2>
+
+  <!--  cpn1 组件没有注册在vue实例中，这里使用会报错 ，如果要直接使用cpn1，需要再将cpn1注册到vue实例中 -->
+  <cpn1></cpn1>
+
+</div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    // 1. 创建第一个组件构造器
+    const cpnC1 = Vue.extend({
+      template: `
+        <div>
+          <h2>我是组件1的标题</h2>
+          <p>我是组件1的内容部分</p>
+        </div>
+      `
+    })
+
+    // 2. 创建第二个组件构造器，把组件构造器1放在组件构造器2中进行注册
+    // 注意要将<cpn1>标签包含在cpn2 的 template里面。
+    // cpn2 是父组件，cpn1 是子组件
+    const cpnC2 = Vue.extend({
+      template: `
+        <div>
+          <h2>我是组件2的标题</h2>
+          <p>我是组件2的内容部分</p>
+          <cpn1></cpn1>
+        </div>
+      `,
+      components: {
+        cpn1: cpnC1
+      }
+    })
+
+    const msg = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊'
+      },
+      components: {
+        cpn2: cpnC2
+      }
+    })
+
+  </script>
+
+</body>
+</html>

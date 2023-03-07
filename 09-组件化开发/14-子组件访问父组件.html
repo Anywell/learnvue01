@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <cpn></cpn>
+</div>
+
+
+<template id="cpn1">
+  <div>
+    <h2>我是子组件1</h2>
+    <button @click="btnClick">按钮1</button>
+    <!--  ccpn 子组件只能在他的父模板中使用，不能再根模板中使用-->
+    <ccpn></ccpn>
+  </div>
+</template>
+
+<template id="cpn2">
+  <div>
+    <h2>我是子组件2</h2>
+    <button @click="btnClick1">按钮2</button>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+
+<!--   $parent 用的非常少-->
+  const msg = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊'
+    },
+    components: {
+      cpn: {
+        template: '#cpn1',
+        methods: {
+          btnClick(){
+            console.log(this.$parent);    // Vue 实例类型
+          }
+        },
+        components: {
+          ccpn: {
+            template: '#cpn2',
+            methods: {
+              btnClick1(){
+                // 访问父组件
+                console.log(this.$parent);  // VueComponent 类型
+                // 访问根组件 $root
+                console.log(this.$root)   // Vue 实例类型
+              }
+            }
+          }
+        }
+      }
+    }
+  })
+
+</script>
+</body>
+</html>

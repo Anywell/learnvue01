@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <h2>{{message}}</h2>
+<!-- checkbox 单选框，单选框绑定 布尔类型 -->
+<!--  使用label的好处是，可以绑定input输入框，点击文字也可以进行选中或不选中-->
+  <label for="license">
+    <input type="checkbox" id="license" v-model="isAgree">同意协议
+  </label>
+
+  <h2>您选择的是： {{isAgree}}</h2>
+  <button :disabled="!isAgree">下一步</button>
+
+
+  <br/>
+  <br>
+
+  <!-- 2. checkbox 多选框，一般一个label和一个input框绑定，多选时就不需要label了-->
+  <!-- 多选框一般绑定数组 -->
+    <input type="checkbox" value="篮球" v-model="hobbies">篮球
+    <input type="checkbox" value="足球" v-model="hobbies">足球
+    <input type="checkbox" value="乒乓球" v-model="hobbies">乒乓球
+    <input type="checkbox" value="羽毛球" v-model="hobbies">羽毛球
+
+    <h2>您的爱好是：{{hobbies}}</h2>
+
+
+<!--  3.v-model 绑定值, 就是动态给value属性赋值。
+    将要选的选项放到数组中，通过遍历数组，将数组中的元素和checkbox绑定，给每一个input的value属性动态绑定数组元素，
+    简化了操作。 动态绑定id属性，在label中也需要动态绑定对应的id，这种写法会给每个 input 绑定一个 label -->
+  <label v-for="item in originlHobbies" :for="item">
+    <input type="checkbox" :id="item" :value="item" v-model="hobbies">{{item}}
+  </label>
+
+</div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const msg = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        isAgree: false,
+        hobbies: [],
+        originlHobbies: ['唱歌', '跳舞', '游戏', '骑行', '爬山']
+      }
+    })
+
+  </script>
+</body>
+</html>

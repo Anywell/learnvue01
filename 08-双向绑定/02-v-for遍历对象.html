@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <h2>{{message}}</h2>
+
+  <!-- 遍历对象的属性,item 是对象的value值-->
+  <ul>
+    <li v-for="item in info">{{item}}</li>
+  </ul>
+
+  <!-- 获取对象的key，value值，前面的是value-->
+  <ul>
+    <li v-for="(value, key) in info">
+      {{value}} --- {{key}}
+    </li>
+  </ul>
+
+  <!-- 获取index下标-->
+  <ul>
+    <li v-for="(value, key, index) in info">
+      {{index}}, {{key}}, {{value}}
+    </li>
+  </ul>
+
+
+</div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const msg = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        info: {
+            name: 'tom',
+            age: 30,
+            weight: 60
+        }
+      }
+    })
+
+  </script>
+</body>
+</html>

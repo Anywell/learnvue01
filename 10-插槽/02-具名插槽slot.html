@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+
+  <cpn><span>标题</span></cpn>
+  <cpn><span slot="center">替换中间</span></cpn>
+  <cpn><button slot="left">替换左边为按钮中间</button></cpn>
+
+
+</div>
+
+<!-- 模板中定义三个插槽，每个插槽都定义个name
+ -->
+<template id="cpn">
+  <div>
+    <slot name="left"><span>左边</span></slot>
+    <slot name="center"><span>中间</span></slot>
+    <slot name="right"><span>右边</span></slot>
+    <slot></slot>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+
+  const msg = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊'
+    },
+    components: {
+      cpn: {
+        template: '#cpn'
+      }
+    }
+  })
+
+</script>
+</body>
+</html>

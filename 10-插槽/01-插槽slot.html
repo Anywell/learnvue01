@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+
+  <cpn></cpn>
+  <cpn><span>我是span</span></cpn>
+  <cpn>
+    <p>我是p标签</p>
+    <div>我是div</div>
+    <i>我是列表</i>
+  </cpn>
+
+</div>
+
+<!-- 1. 插槽的基本使用：在组件中定义<slot></slot>即可
+     2. 插槽的默认值： <slot><button>按钮</button></slot>
+     3. 如果组件标签中有多个值，会全部替换
+ -->
+
+
+<template id="cpn">
+  <div>
+    <h2>我是组件</h2>
+    <p>我是组件内容</p>
+<!--     给插槽中一个默认值-->
+    <slot><button>按钮</button></slot>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+
+  const msg = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊'
+    },
+    components: {
+      cpn: {
+        template: '#cpn'
+      }
+    }
+  })
+
+</script>
+</body>
+</html>

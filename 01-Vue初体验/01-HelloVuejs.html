@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="../styles/first.css" rel="stylesheet">
+    <link href="https://fonts.font.im/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<h3>This is a html page.</h3>
+
+<div id="app">{{message}}</div>
+<p>hello html</p>
+<ol>
+    <li>fist</li>
+    <li>second</li>
+    <li>third</li>
+</ol>
+<br/>
+<a href="http://www.baidu.com">baidu</a>
+
+
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+    let app = new Vue({
+        el: '#app', // 用于挂载要管理的元素
+        data: {     // 定义一些数据
+            message: '你好啊，李银河！'
+        }
+    });
+
+
+    let obj = {};
+
+    let stu = {
+        'name': 'jack',
+        'age': '17',
+        'address': {
+            'city': 'xian',
+            'province': 'shanxi'
+        }
+    };
+
+    let emp = {
+        name: "jack",
+        age: 30,
+        address: {
+            province: "shanxi",
+            city: "xian",
+            num: 12
+        }
+    };
+
+
+    let city = emp.address.city;
+
+    let num = emp["address"]["num"];
+
+
+    function Person(name, age){
+        this.name = name;
+        this.age = age;
+    }
+
+    let you = new Person("zhangsan", 20);
+
+
+    let arr = ['cat', 'dog', 'hourse'];
+
+    let citys = new Array();
+    citys[0] = 'beijing';
+    citys[1] = 'xian';
+    citys[2] = 'shanghai';
+
+    for (let i = 0; i < citys.length; i++){
+
+    }
+
+    for (let i in citys){
+
+    }
+
+    for (let a of arr){
+
+    }
+
+    citys.forEach(function(cur, index, arr){
+
+    })
+    citys.push('tianshui');
+
+    function add(){
+        let sum = 0;
+        for (let i = 0; i < arguements.length; i++) {
+            sum += arguments[i];
+        }
+        return sum;
+    }
+
+    function avg(...args){
+        let sum = 0;
+        for (let value of args){
+            sum += value;
+        }
+        return sum / args.length;
+    }
+
+    function agvArr(arr){
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        return sum / arr.length;
+    }
+
+    avg.apply(null, citys);
+
+
+    let avg = function(){
+
+        let sum = 0;
+        for (let i = 0; i < arguments.length; i++) {
+            sum += arguments[i];
+        }
+
+        return sum /arguments.length;
+    }
+
+    function makePerson(first, last){
+        return {
+            first: first,
+            last: last;
+        }
+    }
+
+    function personFullName(person){
+        return person.first + " " + person.last;
+    }
+
+    let p = makePerson('any', 'well');
+    let fullName = personFullName(p);
+
+    function MakePerson1(first, last){
+
+        this.first= first;
+        this.last= last;
+        this.fullName = function(){
+            return this.first + + ' ' + this.last;
+        }
+
+        this.reverseName =function(){
+            return this.last + ' ' + this.first;
+        }
+    }
+
+    p = MakePerson1('hello', 'js');
+    p.fullName();
+    p.reverseName();
+
+    let pe = new MakePerson1('zhang', 'san');
+
+
+    function Animal(name, age){
+        this.name = name;
+        this.age = age;
+    }
+
+    Animal.prototype.setNameAndAge = function(){
+        return this.name + ' ' + this.age;
+    }
+
+    Animal.prototype.setAgeAndName = function(){
+        return this.age + ' ' + this.name;
+    }
+
+    Animal.prototype.getAddress = function(){
+        return "shanxi xian";
+    }
+
+    Animal.prototype.toString = function(){
+        return "name: " + name + ", age: " + age;
+    }
+
+    let animal = new Animal("lucy", 30);
+    animal.toString();
+
+    
+    let str = "hello, js";
+    String.prototype.reverseStr = function(){
+        let s = "";
+        for (let i = this.length-1; i >= 0; i-) {
+            s += this[i];
+        }
+        return s;
+    }
+    str.reverseStr();
+
+    "I am a loser!!!".reverseStr();
+
+
+    function parentFun(){
+        let a = 1;
+
+        function childFun(){
+            let b = a + 1;
+        }
+
+        function child(){
+            let c = a + 10;
+        }
+
+        return childFun();
+    }
+
+
+
+</script>
+
+</body>
+</html>
