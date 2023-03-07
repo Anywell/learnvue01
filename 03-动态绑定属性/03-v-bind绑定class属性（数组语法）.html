@@ -1,10 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+
+  <div id="app">
+      <h2 class="title" :class="['active', 'line']">{{message}}</h2>
+
+      <!-- 可以使用变量-->
+      <h2 class="title" :class="[active, line]">{{message}}</h2>
+      <!-- 可以使用函数 -->
+      <h2 class="title" :class="getClasses()">{{message}}</h2>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const msg = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        active: 'aaaa',
+        line: 'bbbb'
+      },
+    methods: {
+      getClasses: function (){
+          return ['active1', 'line1'];
+      }
+    }
+    })
+
+  </script>
 </body>
 </html>

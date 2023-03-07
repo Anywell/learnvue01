@@ -1,10 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+    <script>
+
+        // 1.字面量，给对象直接赋值
+        const obj = {
+            name: 'jack',
+            age: 32,
+            run : function(){
+                console.log('在奔跑');
+            },
+            eat: function(){
+                console.log('在吃饭');
+            }
+        }
+
+        // 2. 属性增强写法
+        const name = 'tom';
+        const age = 18;
+        const city = 'xian';
+
+        // 3. ES5写法
+        const p = {
+            name: name,
+            age: age,
+            city: city
+        }
+
+        // 4.ES6写法
+        const p1 = {
+            name,
+            age,
+            city
+        }
+
+        // 5.函数的增强写法，省略function字段
+        const ob = {
+            run: function(){
+
+            },
+            eat: function(){
+
+            }
+        }
+
+        const ob1 = {
+            run(){
+
+            },
+            eat(){
+
+            }
+        }
+
+
+    </script>
+
+
 </body>
 </html>

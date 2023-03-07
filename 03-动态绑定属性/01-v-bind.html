@@ -6,5 +6,29 @@
 </head>
 <body>
 
+  <div id="app">
+      <!-- 错误用法，mustache语法只能在标签中间使用-->
+    <img src="{{imgUrl}}">
+      <!-- 正确语法：使用v-bind动态绑定-->
+    <img v-bind:src="imgUrl"/><br>
+    <img :src="imgUrl"/><br/>
+
+    <a v-bind:href="aHref">百度一下</a><br>
+    <a :href="aHref">百度一下</a>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const msg = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        imgUrl: "https://img1.baidu.com/it/u=2466141796,2340516631&fm=253&fmt=auto&app=138&f=JPEG?w=640&h=480",
+        aHref: "http://www.baidu.com"
+      }
+    })
+
+  </script>
 </body>
 </html>

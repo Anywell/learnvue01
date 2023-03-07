@@ -1,10 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+
+<div id="app">
+  <h2>{{message}}</h2>
+</div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const msg = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊'
+      }
+    })
+
+    // 1. const修饰的变量不能再改变
+    const name = 'jack';
+    // name = 'hello';
+
+    const obj = {
+        name: 'hello',
+        age: 30
+    }
+
+    // 2.常量对象内部成员变量可以改变，自身不能改变
+    obj.name = 'kobe';
+    obj.age = 35;
+
+    const p = {
+        name: 'jack',
+        age: 32
+    }
+
+    // obj = p;
+
+
+  </script>
 </body>
 </html>

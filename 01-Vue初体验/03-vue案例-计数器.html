@@ -1,10 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+
+    <div id="app">
+        <h2>当前计数：{{counter}}</h2>
+        <!--
+        <button v-on:click="counter++">+</button>
+        <button v-on:click="counter--;">-</button>
+        -->
+
+        <button v-on:click="counterInc">+</button>
+        <button @click="counterSub">-</button>
+
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                counter: 0
+            },
+            methods: {
+                counterInc : function(){
+                    console.log('counterInc被执行')
+                    this.counter++;
+                },
+                counterSub : function(){
+
+                    console.log('counterSub被执行')
+                    this.counter--;
+                }
+            }
+        })
+
+
+    </script>
+
+
 </body>
 </html>

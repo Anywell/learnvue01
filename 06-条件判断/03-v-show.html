@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
 </head>
 <body>
-$END$
+
+<div id="app">
+  <h2 v-if="isShow" id="aa">{{message}}</h2>
+  <h2 v-show="isShow" id="bb">{{message}}</h2>
+</div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const msg = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        isShow: true
+      }
+    })
+
+  </script>
+
 </body>
 </html>

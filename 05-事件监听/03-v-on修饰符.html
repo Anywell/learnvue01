@@ -2,9 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
 </head>
 <body>
-$END$
+
+<div id="app">
+  <h2>{{message}}</h2>
+
+  <!-- 事件冒泡：点击按钮，div的点击事件也会传递给按钮-->
+  <div @click="divClick">
+    <p>这是div里面的</p>
+    <button @click="btnClick">按钮1</button>
+    <!-- -->
+    <button @click.stop="btnClick">按钮2</button>
+  </div>
+
+
+  <!--2. prevent修饰符，阻止默认提交行为，执行方法 submitClick 定义的行为-->
+  <form action="baidu">
+    <input type="submit" value="提交" @click.prevent="submitClick">
+  </form>
+
+  <!--   3.监听键盘-->
+  <!-- keyup 抬起键盘时触发触发方法绑定的事件-->
+  <input type="text" v-on:keyup="keyUp">
+  <!-- keydown 按下键盘时触发触发方法绑定的事件-->
+  <input type="text" v-on:keydown="keyDown">
+
+  <!-- 只监听enter的点击，只有按下enter键是，触发方法绑定的事件 -->
+  <input type="text" v-on:keyup.enter="keyUp">
+
+  <br/>
+  <!--  4.once修饰符,只触发一次事件-->
+  <button @click.once="clickOnce">只能点击一次的按钮</button>
+
+
+</div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const msg = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊'
+      },
+      methods: {
+          btnClick(){
+              console.log('btnClick');
+          },
+          divClick(){
+              console.log('divClick');
+          },
+          submitClick(){
+              console.log("submitClick");
+          },
+          keyUp(){
+              console.log('keyup');
+          },
+          keyDown(){
+              console.log('keydown');
+          },
+          clickOnce(){
+              console.log('clickOnce');
+          }
+      }
+    })
+
+  </script>
 </body>
 </html>

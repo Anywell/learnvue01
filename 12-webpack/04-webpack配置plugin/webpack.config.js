@@ -1,12 +1,15 @@
 // 依赖node包
 const path = require('path');
+const webpack = require('webpack');
+const htmlWebpakPlugin = require('html-webpack-plugin');
+const uglifyjsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: 'dist/'
+    //publicPath: 'dist/'
   },
   module: {
     rules: [
@@ -61,5 +64,16 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
     }
+  },
+  plugins: [
+    new webpack.BannerPlugin('最终版权归any所有'),
+    new htmlWebpakPlugin({
+      template: 'index.html'
+    }),
+    // new uglifyjsPlugin()
+  ],
+  devServer: {
+    contentBase: './dist',
+    inline: true
   }
 }
